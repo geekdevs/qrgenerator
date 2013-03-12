@@ -2,7 +2,14 @@
 require 'lib/autoloader.php';
 use Trekksoft\QrEncrypt\QrCode, Trekksoft\QrEncrypt\Renderer\GoogleChartsRenderer;
 
-$qrCode = new QrCode('Comment ça fonctionne? 我爱编码', 300, 300);
+$text = "
+Name: Joe Doe\n
+Tour: River Rafting Tour on the Big Sea\n
+Date: 20 june 2013 at 14:15h\n
+Price: USD 50.-\n
+";
+
+$qrCode = new QrCode($text, 300, 300);
 $qrCode->setRenderer(new GoogleChartsRenderer());
 $qrCodeData = $qrCode->generate();
 
