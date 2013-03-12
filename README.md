@@ -1,0 +1,4 @@
+qrgenerator
+===========
+
+Simple QR generator
