@@ -1,15 +1,17 @@
 <?php
 require 'lib/autoloader.php';
-use Trekksoft\QrEncrypt\QrCode, Trekksoft\QrEncrypt\Renderer\GoogleChartsRenderer;
+use Trekksoft\QrEncrypt\QrCode,
+    Trekksoft\QrEncrypt\Renderer\GoogleChartsRenderer,
+    Trekksoft\PassengerTicket;
 
-$text = "
-Name: Joe Doe\n
-Tour: River Rafting Tour on the Big Sea\n
-Date: 20 june 2013 at 14:15h\n
-Price: USD 50.-\n
-";
+$ticket = new PassengerTicket(
+    'Joe Doe',
+    'River Rafting Tour on the Big Sea',
+    'USD 50.-',
+    new \DateTime('tomorrow 2pm')
+);
 
-$qrCode = new QrCode($text, 300, 300);
+$qrCode = new QrCode($ticket, 300, 300);
 $qrCode->setRenderer(new GoogleChartsRenderer());
 $qrCodeData = $qrCode->generate();
 
